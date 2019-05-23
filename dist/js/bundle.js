@@ -86,16 +86,35 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/component/modal.js":
+/*!***********************************!*\
+  !*** ./src/js/component/modal.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function modal() {
+    alert('modal form is worked');
+}
+
+module.exports = modal;
+
+/***/ }),
+
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
   \**************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 window.addEventListener('DOMContentLoaded', function(){
     'use strict'
+    let modal = __webpack_require__(/*! ./component/modal.js */ "./src/js/component/modal.js");
+
+    modal(); 
 });
+
 
 /***/ })
 
