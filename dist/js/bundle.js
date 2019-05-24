@@ -118,21 +118,65 @@ function modal() {
             popup.style.display = '';
         });
     }
-
-
-
-
-    // consultationBtn.forEach( item => {
-    //     item.addEventListener('click', function() {
-    //         popupConsultation.style.display = 'block';
-    //     });
-    // });
-    // popupConsultation.querySelector('.popup-close').addEventListener('click', function() {
-    //     popupConsultation.style.display = '';
-    // });
 }
 
 module.exports = modal;
+
+/***/ }),
+
+/***/ "./src/js/component/sendForm.js":
+/*!**************************************!*\
+  !*** ./src/js/component/sendForm.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function sendForm() {
+    let popupConsultation = document.querySelector('.popup-consultation'),
+        popupDesing = document.querySelector('.popup-design');
+
+        function postForm(popup) {
+            let form = popup.querySelector('form'),
+                status = document.createElement('div'),
+                textarea = form.querySelector('textarea'),
+                input = form.querySelectorAll('input');
+
+            function clearArea() {
+                input.forEach(item => {
+                    item.value = '';
+                });
+                textarea.value = '';
+            }
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                form.appendChild(status);
+                
+                let request = new XMLHttpRequest();
+                request.open('POST', 'server.php');
+                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+                let formData = new FormData(form);
+                request.send(formData);
+        
+                request.addEventListener('readystatechange', function() {
+                    if (request.readyState > 4) {
+                        status.textContent = 'загрузка';
+                    } else if (request.readyState === 4 && request.status == 200) {
+                        status.textContent = 'успех';
+                    } else {
+                        status.textContent = 'ошибка';
+                    }
+                });
+
+                clearArea();     
+            });
+        }
+        postForm(popupDesing);
+        postForm(popupConsultation);
+}
+
+module.exports = sendForm;
 
 /***/ }),
 
@@ -145,9 +189,11 @@ module.exports = modal;
 
 window.addEventListener('DOMContentLoaded', function(){
     'use strict'
-    let modal = __webpack_require__(/*! ./component/modal.js */ "./src/js/component/modal.js");
+    let modal = __webpack_require__(/*! ./component/modal.js */ "./src/js/component/modal.js"),
+        sendForm = __webpack_require__(/*! ./component/sendForm.js */ "./src/js/component/sendForm.js");
 
     modal(); 
+    sendForm();
 });
 
 

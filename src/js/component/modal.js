@@ -23,18 +23,6 @@ function modal() {
             popup.style.display = '';
         });
     }
-
-
-
-
-    // consultationBtn.forEach( item => {
-    //     item.addEventListener('click', function() {
-    //         popupConsultation.style.display = 'block';
-    //     });
-    // });
-    // popupConsultation.querySelector('.popup-close').addEventListener('click', function() {
-    //     popupConsultation.style.display = '';
-    // });
 }
 
 module.exports = modal;
