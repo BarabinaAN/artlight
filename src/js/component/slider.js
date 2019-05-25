@@ -37,11 +37,11 @@ function slider() {
     });
 
     function autoplaySlides(sec) {
-        if (autoplay = true) {
+        if (autoplay == true) {
             setTimeout(function playSlide() {
                 plusSlide(1);
                 currentSlide(slideIndex);
-                setTimeout(playSlide, sec*1000 );
+                setTimeout( playSlide, sec*1000 );
             }, sec*1000);
         } 
     }  

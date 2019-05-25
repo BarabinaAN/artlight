@@ -1,6 +1,7 @@
 function sendForm() {
     let popupConsultation = document.querySelector('.popup-consultation'),
-        popupDesing = document.querySelector('.popup-design');
+        popupDesing = document.querySelector('.popup-design'),
+        consultation = document.querySelector('.consultation');
 
         function postForm(popup) {
             let form = popup.querySelector('form'),
@@ -29,7 +30,11 @@ function sendForm() {
 
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
-                popupContent.appendChild(status);
+                if (popupContent != null) {
+                    popupContent.appendChild(status);
+                } else {
+                    form.appendChild(status)
+                }
                 
                 let request = new XMLHttpRequest();
                 request.open('POST', 'server.php');
@@ -56,6 +61,7 @@ function sendForm() {
         }
         postForm(popupDesing);
         postForm(popupConsultation);
+        postForm(consultation);
 }
 
 module.exports = sendForm;
