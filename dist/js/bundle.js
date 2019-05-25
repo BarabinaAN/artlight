@@ -86,6 +86,58 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/component/accordion.js":
+/*!***************************************!*\
+  !*** ./src/js/component/accordion.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function accordion() {
+    let accordion = document.getElementById('accordion'),
+        accordionTitle = document.querySelectorAll('.accordion-heading'),
+        accordionContent = accordion.querySelectorAll('.accordion-block');
+        
+         
+    function changeClassTargetItems(wrap, target, tooltype) {
+        for (let i = 0; i < wrap.length; i++) {
+                
+            wrap[i].querySelector('span').classList.remove('active');
+
+            if (target.parentElement == wrap[i]){
+                target.classList.add('active');   
+                for (let j = 0; j < tooltype.length; j++) {
+                    if (j == i) {
+                        tooltype[j].classList.add('active');
+                    }
+                }
+            }
+        } 
+    }
+
+    function hideAccordionContent(blok) {
+        blok.forEach(item => {
+            item.classList.remove('active');
+        });  
+    }
+
+    accordion.addEventListener('click', function(event) {
+        let target = event.target;
+        
+        hideAccordionContent(accordionContent);
+        if (target && target.tagName == 'SPAN') {
+            changeClassTargetItems(accordionTitle, target, accordionContent);
+        } else {
+            changeClassTargetItems(accordionTitle, target, accordionContent);
+            hideAccordionContent(accordionContent);
+        }
+    });
+}
+
+module.exports = accordion;
+
+/***/ }),
+
 /***/ "./src/js/component/modal.js":
 /*!***********************************!*\
   !*** ./src/js/component/modal.js ***!
@@ -287,11 +339,13 @@ window.addEventListener('DOMContentLoaded', function(){
     'use strict'
     let modal = __webpack_require__(/*! ./component/modal.js */ "./src/js/component/modal.js"),
         slider = __webpack_require__(/*! ./component/slider.js */ "./src/js/component/slider.js"),
+        accordion = __webpack_require__(/*! ./component/accordion.js */ "./src/js/component/accordion.js"),
         sendForm = __webpack_require__(/*! ./component/sendForm.js */ "./src/js/component/sendForm.js");
 
     modal(); 
     sendForm();
     slider();
+    accordion();
 });
 
 
