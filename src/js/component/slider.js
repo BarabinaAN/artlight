@@ -38,12 +38,14 @@ function slider() {
 
     function autoplaySlides(sec) {
         if (autoplay = true) {
-            setInterval(function() {
-                plusSlide(-1);
+            setTimeout(function playSlide() {
+                plusSlide(1);
                 currentSlide(slideIndex);
+                setTimeout(playSlide, sec*1000 );
             }, sec*1000);
         } 
     }  
+
     autoplaySlides(5);
 }
 
