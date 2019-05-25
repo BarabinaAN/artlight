@@ -96,6 +96,8 @@
 function modal() {
     let desingBtn = document.querySelectorAll('.button-design'),
         consultationBtn = document.querySelectorAll('.button-consultation'),
+        giftBtn = document.querySelectorAll('.fixed-gift'),
+        popuppGift = document.querySelector('.popup-gift'),
         popupDesing = document.querySelector('.popup-design'),
         popupConsultation = document.querySelector('.popup-consultation');
         
@@ -103,14 +105,25 @@ function modal() {
     function showModal(btn, popup) {
         btn.forEach( item => {
             item.addEventListener('click', function() {
+                let content = popup.querySelectorAll('.popup-content *');
+                showContent(content);
                 popup.style.display = 'block';
                 hideModal(popup);
             });
         });
     }
+
+    function showContent(cont) {
+        cont.forEach(item => {
+            if( !item.classList.contains('popup-close') ) {
+                item.style.display = '';
+            }
+        });
+    }
     
     showModal(desingBtn, popupDesing);
     showModal(consultationBtn, popupConsultation);
+    showModal(giftBtn, popuppGift);
 
     function hideModal(popup) {
         let close = popup.querySelector('.popup-close');
@@ -138,6 +151,8 @@ function sendForm() {
         function postForm(popup) {
             let form = popup.querySelector('form'),
                 status = document.createElement('div'),
+                popupContent = popup.querySelector('.popup-content'),
+                content = popup.querySelectorAll('.popup-content *'),
                 textarea = form.querySelector('textarea'),
                 input = form.querySelectorAll('input');
 
@@ -145,12 +160,22 @@ function sendForm() {
                 input.forEach(item => {
                     item.value = '';
                 });
-                textarea.value = '';
+                if (textarea != null) {
+                    textarea.value = '';
+                }
+            }
+
+            function hideContent(cont) {
+                cont.forEach(item => {
+                    if( !item.classList.contains('popup-close') ) {
+                        item.style.display = 'none';
+                    }
+                });
             }
 
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
-                form.appendChild(status);
+                popupContent.appendChild(status);
                 
                 let request = new XMLHttpRequest();
                 request.open('POST', 'server.php');
@@ -160,12 +185,15 @@ function sendForm() {
                 request.send(formData);
         
                 request.addEventListener('readystatechange', function() {
-                    if (request.readyState > 4) {
+                    if (request.readyState > 4) {  
+                        hideContent(content);                    
                         status.textContent = 'загрузка';
+
                     } else if (request.readyState === 4 && request.status == 200) {
-                        status.textContent = 'успех';
-                    } else {
-                        status.textContent = 'ошибка';
+                        status.innerHTML = '<h3> Сообщение успешно отправлено! </h3>';
+                    } else {      
+                        hideContent(content);
+                        status.innerHTML = '<h3> К сожалению, произошла ошибка :( </h3>';
                     }
                 });
 
