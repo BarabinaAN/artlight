@@ -3,10 +3,12 @@ window.addEventListener('DOMContentLoaded', function(){
     let modal = require('./component/modal.js'),
         slider = require('./component/slider.js'),
         accordion = require('./component/accordion.js'),
+        filter = require('./component/filter.js'),
         sendForm = require('./component/sendForm.js');
 
     modal(); 
     sendForm();
     slider();
     accordion();
+    filter();
 });

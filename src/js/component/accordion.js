@@ -6,7 +6,7 @@ function accordion() {
          
     function changeClassTargetItems(wrap, target, tooltype) {
         for (let i = 0; i < wrap.length; i++) {
-                
+       
             wrap[i].querySelector('span').classList.remove('active');
 
             if (target.parentElement == wrap[i]){
