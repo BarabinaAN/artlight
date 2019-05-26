@@ -138,6 +138,55 @@ module.exports = accordion;
 
 /***/ }),
 
+/***/ "./src/js/component/calc.js":
+/*!**********************************!*\
+  !*** ./src/js/component/calc.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function calc() {
+    
+    let sizeSelect = document.getElementById('size'),
+        materialSelect = document.getElementById('material'),
+        optionsSelect = document.getElementById('options'),
+        promocodeInput = document.querySelector('.promocode'),
+        totalValue = document.querySelector('.calc-price');
+
+    function updateTotal() {
+        let total = 0,
+            size = 0 | sizeSelect.options[sizeSelect.selectedIndex].value,
+            material = 0 | materialSelect.options[materialSelect.selectedIndex].value,
+            options = 0 | optionsSelect.options[optionsSelect.selectedIndex].value;
+            promocode = promocodeInput.value;
+
+        if (size > 0 && material > 0) {
+            total = size + material + options;
+            if (promocode == 'IWANTPOPART') {
+                total *= 0.7; 
+            }
+        }
+        
+        if (total <= 0) {
+            totalValue.querySelector('.val').style.display = 'none';
+            totalValue.querySelector('.warning').style.display = '';
+        } else {
+            totalValue.querySelector('.warning').style.display = 'none';
+            totalValue.querySelector('.val').style.display = '';
+            totalValue.querySelector('.val').textContent = total;
+        }
+    }
+
+    sizeSelect.addEventListener( 'input', updateTotal );
+    materialSelect.addEventListener( 'input', updateTotal );
+    optionsSelect.addEventListener( 'input', updateTotal );
+    promocodeInput.addEventListener( 'input', updateTotal );
+}
+
+module.exports = calc;
+
+/***/ }),
+
 /***/ "./src/js/component/filter.js":
 /*!************************************!*\
   !*** ./src/js/component/filter.js ***!
@@ -203,6 +252,35 @@ module.exports = filter;
 
 /***/ }),
 
+/***/ "./src/js/component/masked.js":
+/*!************************************!*\
+  !*** ./src/js/component/masked.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function masked() {
+    let inputPhones = document.querySelectorAll('input[name=phone]'),
+        reg = /\D/g;
+
+        inputPhones.forEach(item => {
+            item.addEventListener('input', function(){
+                checkCalcValue(item);
+            });
+        });
+
+        function checkCalcValue(el) {
+            el.setAttribute('type', 'text');
+            if (reg.test(el.value)) {
+                el.value = el.value.replace(reg, '');
+            }
+        }       
+}
+
+module.exports = masked;
+
+/***/ }),
+
 /***/ "./src/js/component/modal.js":
 /*!***********************************!*\
   !*** ./src/js/component/modal.js ***!
@@ -246,6 +324,9 @@ function modal() {
         let close = popup.querySelector('.popup-close');
         close.addEventListener('click', function() {
             popup.style.display = '';
+            if (document.querySelector('.popup-status') != null){
+                document.querySelector('.popup-status').remove();
+            }
         });
     }
 }
@@ -295,8 +376,10 @@ function sendForm() {
                 event.preventDefault();
                 if (popupContent != null) {
                     popupContent.appendChild(status);
+                    status.classList.add('popup-status');
                 } else {
-                    form.appendChild(status)
+                    form.appendChild(status);
+                    status.classList.add('popup-status');
                 }
                 
                 let request = new XMLHttpRequest();
@@ -319,7 +402,7 @@ function sendForm() {
                     }
                 });
 
-                clearArea();     
+                clearArea();                   
             });
         }
         postForm(popupDesing);
@@ -406,6 +489,8 @@ window.addEventListener('DOMContentLoaded', function(){
         slider = __webpack_require__(/*! ./component/slider.js */ "./src/js/component/slider.js"),
         accordion = __webpack_require__(/*! ./component/accordion.js */ "./src/js/component/accordion.js"),
         filter = __webpack_require__(/*! ./component/filter.js */ "./src/js/component/filter.js"),
+        calc = __webpack_require__(/*! ./component/calc.js */ "./src/js/component/calc.js"),
+        masked = __webpack_require__(/*! ./component/masked.js */ "./src/js/component/masked.js"),
         sendForm = __webpack_require__(/*! ./component/sendForm.js */ "./src/js/component/sendForm.js");
 
     modal(); 
@@ -413,6 +498,8 @@ window.addEventListener('DOMContentLoaded', function(){
     slider();
     accordion();
     filter();
+    calc();
+    masked();
 });
 
 
