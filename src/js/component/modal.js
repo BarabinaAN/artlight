@@ -9,7 +9,7 @@ function modal() {
 
     let showModal = (btn, popup) => {
         btn.forEach( item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', () =>{
                 let content = popup.querySelectorAll('.popup-content *');
                 showContent(content);
                 popup.style.display = 'block';

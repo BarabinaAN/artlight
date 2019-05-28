@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', () => {
     'use strict'
     let modal = require('./component/modal.js'),
         slider = require('./component/slider.js'),

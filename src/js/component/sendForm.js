@@ -45,7 +45,7 @@ function sendForm() {
                 let formData = new FormData(form);
                 request.send(formData);
         
-                request.addEventListener('readystatechange', function() {
+                request.addEventListener('readystatechange', () => {
                     if (request.readyState > 4) {  
                         hideContent(content);                    
                         status.textContent = 'загрузка';

@@ -300,7 +300,7 @@ function modal() {
 
     let showModal = (btn, popup) => {
         btn.forEach( item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', () =>{
                 let content = popup.querySelectorAll('.popup-content *');
                 showContent(content);
                 popup.style.display = 'block';
@@ -390,7 +390,7 @@ function sendForm() {
                 let formData = new FormData(form);
                 request.send(formData);
         
-                request.addEventListener('readystatechange', function() {
+                request.addEventListener('readystatechange', () => {
                     if (request.readyState > 4) {  
                         hideContent(content);                    
                         status.textContent = 'загрузка';
@@ -484,7 +484,7 @@ module.exports = slider;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', () => {
     'use strict'
     let modal = __webpack_require__(/*! ./component/modal.js */ "./src/js/component/modal.js"),
         slider = __webpack_require__(/*! ./component/slider.js */ "./src/js/component/slider.js"),
