@@ -1,4 +1,4 @@
-function accordion() {
+let accordion = () => {
     let accordion = document.getElementById('accordion'),
         accordionTitle = document.querySelectorAll('.accordion-heading'),
         accordionContent = accordion.querySelectorAll('.accordion-block');

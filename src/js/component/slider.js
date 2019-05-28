@@ -1,4 +1,4 @@
-function slider() {
+let slider = () => {
     let slideIndex = 1,
         slides = document.querySelectorAll('.feedback-slider-item'),
         prev = document.querySelector('.main-prev-btn'),

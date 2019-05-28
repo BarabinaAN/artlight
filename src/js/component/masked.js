@@ -1,4 +1,4 @@
-function masked() {
+let masked = () => {
          
     let inputPhones = document.querySelectorAll('input[name=phone]'),
         reg = /\D/g;

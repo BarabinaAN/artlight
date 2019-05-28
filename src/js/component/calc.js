@@ -1,4 +1,4 @@
-function calc() {
+let calc = () => {
     
     let sizeSelect = document.getElementById('size'),
         materialSelect = document.getElementById('material'),

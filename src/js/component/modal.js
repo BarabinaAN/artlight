@@ -1,4 +1,4 @@
-function modal() {
+let modal = () => {
     let desingBtn = document.querySelectorAll('.button-design'),
         consultationBtn = document.querySelectorAll('.button-consultation'),
         giftBtn = document.querySelectorAll('.fixed-gift'),

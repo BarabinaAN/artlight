@@ -1,4 +1,4 @@
-function filter() {
+let filter = () => {
     let filter = document.querySelectorAll('.portfolio-menu li'),
         filterContent = document.querySelectorAll('.portfolio-block'),
         filtersWrap = document.querySelector('.portfolio-menu'),  

@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function accordion() {
+let accordion = () => {
     let accordion = document.getElementById('accordion'),
         accordionTitle = document.querySelectorAll('.accordion-heading'),
         accordionContent = accordion.querySelectorAll('.accordion-block');
@@ -145,7 +145,7 @@ module.exports = accordion;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function calc() {
+let calc = () => {
     
     let sizeSelect = document.getElementById('size'),
         materialSelect = document.getElementById('material'),
@@ -194,7 +194,7 @@ module.exports = calc;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function filter() {
+let filter = () => {
     let filter = document.querySelectorAll('.portfolio-menu li'),
         filterContent = document.querySelectorAll('.portfolio-block'),
         filtersWrap = document.querySelector('.portfolio-menu'),  
@@ -259,7 +259,7 @@ module.exports = filter;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function masked() {
+let masked = () => {
          
     let inputPhones = document.querySelectorAll('input[name=phone]'),
         reg = /\D/g;
@@ -289,7 +289,7 @@ module.exports = masked;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function modal() {
+let modal = () => {
     let desingBtn = document.querySelectorAll('.button-design'),
         consultationBtn = document.querySelectorAll('.button-consultation'),
         giftBtn = document.querySelectorAll('.fixed-gift'),
@@ -343,7 +343,7 @@ module.exports = modal;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function sendForm() {
+let sendForm = () => {
     let popupConsultation = document.querySelector('.popup-consultation'),
         popupDesing = document.querySelector('.popup-design'),
         consultation = document.querySelector('.consultation');
@@ -422,7 +422,7 @@ module.exports = sendForm;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function slider() {
+let slider = () => {
     let slideIndex = 1,
         slides = document.querySelectorAll('.feedback-slider-item'),
         prev = document.querySelector('.main-prev-btn'),

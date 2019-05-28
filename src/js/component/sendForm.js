@@ -1,4 +1,4 @@
-function sendForm() {
+let sendForm = () => {
     let popupConsultation = document.querySelector('.popup-consultation'),
         popupDesing = document.querySelector('.popup-design'),
         consultation = document.querySelector('.consultation');
