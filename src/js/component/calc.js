@@ -6,7 +6,7 @@ function calc() {
         promocodeInput = document.querySelector('.promocode'),
         totalValue = document.querySelector('.calc-price');
 
-    function updateTotal() {
+    let updateTotal = () => {
         let total = 0,
             size = 0 | sizeSelect.options[sizeSelect.selectedIndex].value,
             material = 0 | materialSelect.options[materialSelect.selectedIndex].value,

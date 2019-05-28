@@ -5,7 +5,7 @@ function filter() {
         notContent = document.querySelector('.portfolio-no');
 
 
-    function showActiveContent(pr) {
+    let showActiveContent = (pr) => {
         let count = 0;
         for (let i = 0; i < filterContent.length; i++) {
             if ( filterContent[i].classList.contains(pr)) {
@@ -19,7 +19,7 @@ function filter() {
     };
 
 
-    function existsFilterContent(num, list, el) {
+    let existsFilterContent = (num, list, el) => {
         if (num == list.length) {
             el.style.display = 'block';
         } else {
@@ -28,13 +28,13 @@ function filter() {
     };
 
 
-    function changeShow(el, classShow, classHide) {
+    let changeShow = (el, classShow, classHide) => {
         el.classList.add(classShow);
         el.classList.remove(classHide);
     };
 
 
-    filtersWrap.addEventListener('click', function(event) {
+    filtersWrap.addEventListener('click', event => {
         let target = event.target;
         
         if (target && target.tagName == 'LI') {

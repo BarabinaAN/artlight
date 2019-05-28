@@ -3,7 +3,7 @@ function sendForm() {
         popupDesing = document.querySelector('.popup-design'),
         consultation = document.querySelector('.consultation');
 
-        function postForm(popup) {
+        let postForm = (popup) => {
             let form = popup.querySelector('form'),
                 status = document.createElement('div'),
                 popupContent = popup.querySelector('.popup-content'),
@@ -11,7 +11,7 @@ function sendForm() {
                 textarea = form.querySelector('textarea'),
                 input = form.querySelectorAll('input');
 
-            function clearArea() {
+            let clearArea = () => {
                 input.forEach(item => {
                     item.value = '';
                 });
@@ -20,7 +20,7 @@ function sendForm() {
                 }
             }
 
-            function hideContent(cont) {
+            let hideContent = (cont) => {
                 cont.forEach(item => {
                     if( !item.classList.contains('popup-close') ) {
                         item.style.display = 'none';
@@ -28,7 +28,7 @@ function sendForm() {
                 });
             }
 
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', event => {
                 event.preventDefault();
                 if (popupContent != null) {
                     popupContent.appendChild(status);

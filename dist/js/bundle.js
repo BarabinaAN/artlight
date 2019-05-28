@@ -99,7 +99,7 @@ function accordion() {
         accordionContent = accordion.querySelectorAll('.accordion-block');
         
          
-    function changeClassTargetItems(wrap, target, tooltype) {
+    let changeClassTargetItems = (wrap, target, tooltype) => {
         for (let i = 0; i < wrap.length; i++) {
        
             wrap[i].querySelector('span').classList.remove('active');
@@ -115,13 +115,13 @@ function accordion() {
         } 
     }
 
-    function hideAccordionContent(blok) {
+   let hideAccordionContent = (blok) => {
         blok.forEach(item => {
             item.classList.remove('active');
         });  
     }
 
-    accordion.addEventListener('click', function(event) {
+    accordion.addEventListener('click', event => {
         let target = event.target;
         
         hideAccordionContent(accordionContent);
@@ -153,7 +153,7 @@ function calc() {
         promocodeInput = document.querySelector('.promocode'),
         totalValue = document.querySelector('.calc-price');
 
-    function updateTotal() {
+    let updateTotal = () => {
         let total = 0,
             size = 0 | sizeSelect.options[sizeSelect.selectedIndex].value,
             material = 0 | materialSelect.options[materialSelect.selectedIndex].value,
@@ -201,7 +201,7 @@ function filter() {
         notContent = document.querySelector('.portfolio-no');
 
 
-    function showActiveContent(pr) {
+    let showActiveContent = (pr) => {
         let count = 0;
         for (let i = 0; i < filterContent.length; i++) {
             if ( filterContent[i].classList.contains(pr)) {
@@ -215,7 +215,7 @@ function filter() {
     };
 
 
-    function existsFilterContent(num, list, el) {
+    let existsFilterContent = (num, list, el) => {
         if (num == list.length) {
             el.style.display = 'block';
         } else {
@@ -224,13 +224,13 @@ function filter() {
     };
 
 
-    function changeShow(el, classShow, classHide) {
+    let changeShow = (el, classShow, classHide) => {
         el.classList.add(classShow);
         el.classList.remove(classHide);
     };
 
 
-    filtersWrap.addEventListener('click', function(event) {
+    filtersWrap.addEventListener('click', event => {
         let target = event.target;
         
         if (target && target.tagName == 'LI') {
@@ -260,16 +260,17 @@ module.exports = filter;
 /***/ (function(module, exports) {
 
 function masked() {
+         
     let inputPhones = document.querySelectorAll('input[name=phone]'),
         reg = /\D/g;
 
         inputPhones.forEach(item => {
-            item.addEventListener('input', function(){
+            item.addEventListener('input', () => {
                 checkCalcValue(item);
             });
         });
 
-        function checkCalcValue(el) {
+        let checkCalcValue = (el) => {
             el.setAttribute('type', 'text');
             if (reg.test(el.value)) {
                 el.value = el.value.replace(reg, '');
@@ -297,7 +298,7 @@ function modal() {
         popupConsultation = document.querySelector('.popup-consultation');
         
 
-    function showModal(btn, popup) {
+    let showModal = (btn, popup) => {
         btn.forEach( item => {
             item.addEventListener('click', function() {
                 let content = popup.querySelectorAll('.popup-content *');
@@ -308,7 +309,7 @@ function modal() {
         });
     }
 
-    function showContent(cont) {
+    let showContent = (cont) => {
         cont.forEach(item => {
             if( !item.classList.contains('popup-close') ) {
                 item.style.display = '';
@@ -320,9 +321,9 @@ function modal() {
     showModal(consultationBtn, popupConsultation);
     showModal(giftBtn, popuppGift);
 
-    function hideModal(popup) {
+    let hideModal = (popup) => {
         let close = popup.querySelector('.popup-close');
-        close.addEventListener('click', function() {
+        close.addEventListener('click',() => {
             popup.style.display = '';
             if (document.querySelector('.popup-status') != null){
                 document.querySelector('.popup-status').remove();
@@ -347,7 +348,7 @@ function sendForm() {
         popupDesing = document.querySelector('.popup-design'),
         consultation = document.querySelector('.consultation');
 
-        function postForm(popup) {
+        let postForm = (popup) => {
             let form = popup.querySelector('form'),
                 status = document.createElement('div'),
                 popupContent = popup.querySelector('.popup-content'),
@@ -355,7 +356,7 @@ function sendForm() {
                 textarea = form.querySelector('textarea'),
                 input = form.querySelectorAll('input');
 
-            function clearArea() {
+            let clearArea = () => {
                 input.forEach(item => {
                     item.value = '';
                 });
@@ -364,7 +365,7 @@ function sendForm() {
                 }
             }
 
-            function hideContent(cont) {
+            let hideContent = (cont) => {
                 cont.forEach(item => {
                     if( !item.classList.contains('popup-close') ) {
                         item.style.display = 'none';
@@ -372,7 +373,7 @@ function sendForm() {
                 });
             }
 
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', event => {
                 event.preventDefault();
                 if (popupContent != null) {
                     popupContent.appendChild(status);
@@ -428,7 +429,7 @@ function slider() {
         next = document.querySelector('.main-next-btn'),
         autoplay = true;
 
-    function ShowSlide(n) {
+    let ShowSlide = (n) => {
         if (n > slides.length) {
             slideIndex = 1; 
         }
@@ -441,25 +442,25 @@ function slider() {
     }  
     ShowSlide(slideIndex); 
 
-    function plusSlide(n) {
+    let plusSlide = (n) => {
         ShowSlide(slideIndex += n);
     }
 
-    function currentSlide(n) {
+    let currentSlide = (n) => {
         ShowSlide(slideIndex = n);
     }
 
-    prev.addEventListener('click', function() {
+    prev.addEventListener('click', () => {
         plusSlide(-1);
         currentSlide(slideIndex);
     });
 
-    next.addEventListener('click', function() {
+    next.addEventListener('click', () => {
         plusSlide(1);
         currentSlide(slideIndex);
     });
 
-    function autoplaySlides(sec) {
+    let autoplaySlides = (sec) =>{
         if (autoplay == true) {
             setTimeout(function playSlide() {
                 plusSlide(1);
@@ -500,6 +501,7 @@ window.addEventListener('DOMContentLoaded', function(){
     filter();
     calc();
     masked();
+    
 });
 
 

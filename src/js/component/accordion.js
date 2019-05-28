@@ -4,7 +4,7 @@ function accordion() {
         accordionContent = accordion.querySelectorAll('.accordion-block');
         
          
-    function changeClassTargetItems(wrap, target, tooltype) {
+    let changeClassTargetItems = (wrap, target, tooltype) => {
         for (let i = 0; i < wrap.length; i++) {
        
             wrap[i].querySelector('span').classList.remove('active');
@@ -20,13 +20,13 @@ function accordion() {
         } 
     }
 
-    function hideAccordionContent(blok) {
+   let hideAccordionContent = (blok) => {
         blok.forEach(item => {
             item.classList.remove('active');
         });  
     }
 
-    accordion.addEventListener('click', function(event) {
+    accordion.addEventListener('click', event => {
         let target = event.target;
         
         hideAccordionContent(accordionContent);

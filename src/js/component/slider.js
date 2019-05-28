@@ -5,7 +5,7 @@ function slider() {
         next = document.querySelector('.main-next-btn'),
         autoplay = true;
 
-    function ShowSlide(n) {
+    let ShowSlide = (n) => {
         if (n > slides.length) {
             slideIndex = 1; 
         }
@@ -18,25 +18,25 @@ function slider() {
     }  
     ShowSlide(slideIndex); 
 
-    function plusSlide(n) {
+    let plusSlide = (n) => {
         ShowSlide(slideIndex += n);
     }
 
-    function currentSlide(n) {
+    let currentSlide = (n) => {
         ShowSlide(slideIndex = n);
     }
 
-    prev.addEventListener('click', function() {
+    prev.addEventListener('click', () => {
         plusSlide(-1);
         currentSlide(slideIndex);
     });
 
-    next.addEventListener('click', function() {
+    next.addEventListener('click', () => {
         plusSlide(1);
         currentSlide(slideIndex);
     });
 
-    function autoplaySlides(sec) {
+    let autoplaySlides = (sec) =>{
         if (autoplay == true) {
             setTimeout(function playSlide() {
                 plusSlide(1);

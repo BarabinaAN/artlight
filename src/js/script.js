@@ -15,4 +15,5 @@ window.addEventListener('DOMContentLoaded', function(){
     filter();
     calc();
     masked();
+    
 });

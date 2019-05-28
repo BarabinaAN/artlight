@@ -7,7 +7,7 @@ function modal() {
         popupConsultation = document.querySelector('.popup-consultation');
         
 
-    function showModal(btn, popup) {
+    let showModal = (btn, popup) => {
         btn.forEach( item => {
             item.addEventListener('click', function() {
                 let content = popup.querySelectorAll('.popup-content *');
@@ -18,7 +18,7 @@ function modal() {
         });
     }
 
-    function showContent(cont) {
+    let showContent = (cont) => {
         cont.forEach(item => {
             if( !item.classList.contains('popup-close') ) {
                 item.style.display = '';
@@ -30,9 +30,9 @@ function modal() {
     showModal(consultationBtn, popupConsultation);
     showModal(giftBtn, popuppGift);
 
-    function hideModal(popup) {
+    let hideModal = (popup) => {
         let close = popup.querySelector('.popup-close');
-        close.addEventListener('click', function() {
+        close.addEventListener('click',() => {
             popup.style.display = '';
             if (document.querySelector('.popup-status') != null){
                 document.querySelector('.popup-status').remove();
